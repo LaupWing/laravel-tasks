@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Http\Client\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +16,14 @@ use Illuminate\Support\Facades\Route;
 
 
 $tasks = [
-   "test"
+   
 ];
 
 Route::get("/", function () use ($tasks) {
+   return view("tasks", ["tasks" => $tasks]);
+});
+
+Route::post("/add", function (Request $request) use ($tasks) {
+   dd($request->all());
    return view("tasks", ["tasks" => $tasks]);
 });
