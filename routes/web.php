@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/", function () {
-   return view("tasks");
+
+$tasks = [
+   "test"
+];
+
+Route::get("/", function () use ($tasks) {
+   return view("tasks", ["tasks" => $tasks]);
 });
