@@ -22,7 +22,7 @@ Route::get("/", function () {
 
 Route::post("/add", function (Request $request) {
    $tasks = Session::get("tasks", []);
-
+   logger($tasks);
    if (!empty($task)) {
       $tasks = Session::get("tasks", []);
       $tasks[] = $request->todo;
