@@ -844,7 +844,8 @@
       @endif
    </ul>
    <form action="{{url('/add')}}" method="POST">
-      <input type="text" placeholder="todo">
+      @csrf
+      <input name="todo" type="text" placeholder="todo">
       <button class="bg-gray-100" type="submit">Submit task</button>
    </form>
 </body>

@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,16 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-$tasks = [
-   
-];
-
-Route::get("/", function () use ($tasks) {
+Route::get("/", function () {
+   $tasks = Session::get("tasks", []);
    return view("tasks", ["tasks" => $tasks]);
 });
 
-Route::post("/add", function (Request $request) use ($tasks) {
-   dd($request->all());
+Route::post("/add", function (Request $request) {
+   $tasks = Session::get("tasks", []);
+
+   if (!empty($task)) {
+      $tasks = Session::get("tasks", []);
+      $tasks[] = $request->todo;
+      Session::put("tasks", $tasks);
+  }
    return view("tasks", ["tasks" => $tasks]);
 });
