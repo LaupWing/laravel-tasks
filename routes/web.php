@@ -26,8 +26,9 @@ Route::post("/add", function (Request $request) {
    if (!empty($task)) {
       $tasks = Session::get("tasks", []);
       $tasks[] = $request->todo;
+      logger($tasks);
       Session::put("tasks", $tasks);
-      logger(tasks = Session::get("tasks", []));
+      logger(Session::get("tasks", []));
   }
-   return view("tasks", ["tasks" => $tasks]);
+  return redirect("/");
 });
