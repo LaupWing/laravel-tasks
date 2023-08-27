@@ -22,11 +22,12 @@ Route::get("/", function () {
 
 Route::post("/add", function (Request $request) {
    $tasks = Session::get("tasks", []);
-   logger($tasks);
+   
    if (!empty($task)) {
       $tasks = Session::get("tasks", []);
       $tasks[] = $request->todo;
       Session::put("tasks", $tasks);
+      logger(tasks = Session::get("tasks", []));
   }
    return view("tasks", ["tasks" => $tasks]);
 });
